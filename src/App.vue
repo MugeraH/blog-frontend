@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app">
     <Navbar />
     <router-view />
   </div>
@@ -17,11 +17,12 @@ export default {
 </script>
 
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .app {
@@ -29,8 +30,6 @@ export default {
   flex-direction: column;
   min-height: 100vh;
 }
-
-
 
 /* .arrow {
   margin-left: 8px;

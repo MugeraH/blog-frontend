@@ -82,7 +82,8 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  background-color: #fff;
+  background-color: rgb(10, 10, 10);
+  width: 100%;
   padding: 0 25px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -99,16 +100,17 @@ header {
   }
   nav {
     display: flex;
-    padding: 10px 0;
+    padding: 15px 0;
+    width: 100%;
 
     .branding {
       display: flex;
       align-items: center;
 
       .header {
-        font-size: 24px;
-        color: #000;
-        font-weight: 600;
+        font-size: 25px;
+        color: rgb(255, 102, 0);
+        font-weight: 700;
         text-decoration: none;
       }
     }
@@ -126,8 +128,17 @@ header {
         margin-right: 32px;
         .link {
           margin-right: 32px;
-          color: #000;
-          font-weight: 500;
+          color: rgb(255, 102, 0);
+          font-weight: 600;
+          transition: 0.1s all ease;
+          padding: 0px 0px 5px 0px;
+          border: none;
+
+          &:hover {
+            border: none;
+            text-decoration: none;
+            color: #fff;
+          }
         }
         .link:last-child {
           margin-right: 0;
@@ -141,9 +152,13 @@ header {
     position: absolute;
     top: 5px;
     right: 25px;
-    height: 25px;
+    height: 29px;
     width: auto;
     transition: 0.3s ease;
+
+    path {
+      fill: rgb(255, 102, 0);
+    }
   }
 
   .mobile-nav {
@@ -154,13 +169,22 @@ header {
     flex-direction: column;
     position: fixed;
     height: 100%;
-    background-color: #303030;
+    background-color: rgb(255, 102, 0);
     top: 0;
     left: 0;
 
     .link {
-      padding: 15px 0;
+      padding: 30px 0;
       color: white;
+      font-weight: 600;
+      transition: 0.5s all ease;
+      padding: 0px 0px 5px 0px;
+      font-size: 20px;
+
+      &:hover {
+        text-decoration: none;
+        font-size: 28px;
+      }
     }
   }
 
