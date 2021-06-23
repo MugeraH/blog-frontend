@@ -1,6 +1,6 @@
 <template>
   <header>
-    <nav class="container">
+    <nav class="container-fluid m-0 p-0">
       <div class="branding">
         <router-link class="header" :to="{ name: 'Home' }"
           >Blog Website</router-link
@@ -46,7 +46,7 @@
 import menuIcon from "../assets/Icons/bars-regular.svg";
 import closeMenuIcon from "../assets/Icons/close.svg";
 export default {
-  name: "navigation",
+  name: "Navbar",
   components: {
     menuIcon,
     closeMenuIcon,
@@ -99,7 +99,7 @@ header {
   }
   nav {
     display: flex;
-    padding: 25px 0;
+    padding: 10px 0;
 
     .branding {
       display: flex;
@@ -120,10 +120,14 @@ header {
       align-items: center;
       justify-content: flex-end;
 
+      padding: 15px 0px 0px 0px;
+
       ul {
         margin-right: 32px;
         .link {
           margin-right: 32px;
+          color: #000;
+          font-weight: 500;
         }
         .link:last-child {
           margin-right: 0;
@@ -135,7 +139,7 @@ header {
   .menu-icon {
     cursor: pointer;
     position: absolute;
-    top: 32px;
+    top: 5px;
     right: 25px;
     height: 25px;
     width: auto;

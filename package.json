@@ -1,40 +1,35 @@
 {
-  "name": "frontend",
+  "name": "fireblogs",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "test:e2e": "vue-cli-service test:e2e"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue/compiler-sfc": "^3.1.2",
     "axios": "^0.21.1",
-    "bootstrap-vue": "^2.21.2",
+    "bootstrap": "^4.6.0",
     "core-js": "^3.6.5",
-    "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0",
+    "toast": "^0.3.43",
+    "vue": "^2.6.11",
+    "vue-router": "^3.2.0",
     "vue-svg-loader": "^0.16.0",
-    "vuex": "^4.0.0-0"
+    "vue2-editor": "^2.10.2",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@babel/polyfill": "^7.11.5",
     "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/test-utils": "^2.0.0-0",
-    "bootstrap": "^4.5.3",
-    "mutationobserver-shim": "^0.3.7",
-    "popper.js": "^1.16.1",
-    "portal-vue": "^2.1.7",
-    "sass": "^1.26.11",
-    "sass-loader": "^10.0.2",
-    "typescript": "~3.9.3",
-    "vue-cli-plugin-bootstrap-vue": "~0.7.0",
-    "vue-jest": "^5.0.0-0"
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.14"
   }
 }
