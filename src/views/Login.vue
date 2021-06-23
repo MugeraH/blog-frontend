@@ -6,7 +6,7 @@
     <form @submit.prevent="submitForm">
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" class="form-control" v-model="username" />
+        <input type="email" class="form-control" v-model="email" />
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -19,7 +19,7 @@
       </div>
 
       <div class="error-card" v-if="errors.length">
-        <p v-for="error in errors" :key="error">{{ error }}></p>
+        <p v-for="error in errors" :key="error">error: {{ error }}</p>
       </div>
 
       <button type="submit" class="btn btn-large">Login</button>
@@ -29,7 +29,7 @@
 
 <script>
 import axios from "axios";
-import { toast } from "toast";
+import { toast } from "bulma-toast";
 export default {
   name: "Login",
   data() {
@@ -44,12 +44,11 @@ export default {
     async submitForm() {
       this.$store.commit("setIsLoading", true);
 
-      
       axios.defaults.headers.common["Authorization"] = "";
       localStorage.removeItem("token");
 
       const formData = {
-        username: this.username,
+        username: this.email,
         password: this.password,
       };
 
@@ -71,7 +70,7 @@ export default {
             dismissible: true,
             pauseOnHover: true,
             duration: 2000,
-            position: "bottom-right",
+            position: "top-right",
           });
         })
         .catch((error) => {
@@ -174,9 +173,9 @@ export default {
 
 .error-card {
   padding: 10px;
-  background-color: red;
+  background-color: white;
   border-radius: 10px;
-  color: white;
+  color: rgb(255, 102, 0);
   font-size: 18px;
 }
 </style>
