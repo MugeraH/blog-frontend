@@ -3,14 +3,23 @@
     <header class=" login-header m-0">
       <p class=" text-center">Login</p>
     </header>
-    <form>
+    <form @submit.prevent="submitForm">
       <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" class="form-control" />
+        <label for="email">Email</label>
+        <input type="email" class="form-control" v-model="username" />
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" />
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          v-model="password"
+        />
+      </div>
+
+      <div class="error-card" v-if="errors.length">
+        <p v-for="error in errors" :key="error">{{ error }}></p>
       </div>
 
       <button type="submit" class="btn btn-large">Login</button>
@@ -19,7 +28,66 @@
 </template>
 
 <script>
-export default {};
+import axios from "axios";
+import { toast } from "toast";
+export default {
+  name: "Login",
+  data() {
+    return {
+      email: "",
+      password: "",
+
+      errors: [],
+    };
+  },
+  methods: {
+    async submitForm() {
+      this.$store.commit("setIsLoading", true);
+
+      
+      axios.defaults.headers.common["Authorization"] = "";
+      localStorage.removeItem("token");
+
+      const formData = {
+        username: this.username,
+        password: this.password,
+      };
+
+      await axios
+        .post("/api/v1/token/login/", formData)
+        .then((response) => {
+          const token = response.data.auth_token;
+
+          axios.defaults.headers.common["Authorization"] = "Token " + token;
+
+          localStorage.setItem("token", token);
+
+          this.$router.push({ path: "/home" });
+          console.log("logging in");
+
+          toast({
+            message: "Login Successful",
+            type: "is-success",
+            dismissible: true,
+            pauseOnHover: true,
+            duration: 2000,
+            position: "bottom-right",
+          });
+        })
+        .catch((error) => {
+          if (error.response) {
+            for (const property in error.response.data) {
+              this.errors.push(`${property}: ${error.response.data[property]}`);
+            }
+          } else {
+            this.errors.push("Something went wrong.Please try again!");
+          }
+        });
+
+      this.$store.commit("setIsLoading", false);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -79,14 +147,16 @@ export default {};
       background: white;
       color: rgb(255, 102, 0);
 
-      border: 2px solid rgb(255, 102, 0);
+      border: 3px solid rgb(255, 102, 0);
       padding: 7px 15px;
       margin: 5px;
       border-radius: 5px;
       cursor: pointer;
       text-decoration: none;
       font-size: 18px;
+      font-weight: 600;
       font-family: inherit;
+      transition: 0.3s all ease;
       &:focus {
         outline: none;
       }
@@ -94,7 +164,19 @@ export default {};
       &:active {
         transform: scale(0.98);
       }
+      &:hover {
+        color: white;
+        background: rgb(255, 102, 0);
+      }
     }
   }
+}
+
+.error-card {
+  padding: 10px;
+  background-color: red;
+  border-radius: 10px;
+  color: white;
+  font-size: 18px;
 }
 </style>
