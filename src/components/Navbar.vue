@@ -40,23 +40,44 @@
 
     <transition name="mobile-icon">
       <closeMenuIcon
-        @click="toogleMobileNav"
+        @click.native="toogleMobileNav"
         class="menu-icon"
         v-show="mobileNav && mobile"
       />
     </transition>
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
-        <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
-        <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
+        <router-link
+          class="link"
+          @click.native="toogleMobileNav"
+          :to="{ name: 'Home' }"
+          >Home</router-link
+        >
+        <router-link
+          class="link"
+          :to="{ name: 'Blogs' }"
+          @click.native="toogleMobileNav"
+          >Blogs</router-link
+        >
         <template v-if="!$store.state.isAuthenticated">
-          <router-link class="link" :to="{ name: 'Register' }"
+          <router-link
+            class="link"
+            :to="{ name: 'Register' }"
+            @click.native="toogleMobileNav"
             >Register</router-link
           >
-          <router-link class="link" :to="{ name: 'Login' }">Login</router-link>
+          <router-link
+            class="link"
+            @click.native="toogleMobileNav"
+            :to="{ name: 'Login' }"
+            >Login</router-link
+          >
         </template>
         <template v-else>
-          <router-link class="link" :to="{ name: 'AddBlog' }"
+          <router-link
+            class="link"
+            :to="{ name: 'AddBlog' }"
+            @click.native="toogleMobileNav"
             >Create Post</router-link
           >
 

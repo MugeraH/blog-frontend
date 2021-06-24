@@ -68,7 +68,6 @@ export default {
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border-radius: 5px;
   @media (max-width: 850px) {
-    background-color: grey;
     flex-direction: column;
     padding: 10px;
   }
@@ -150,7 +149,6 @@ export default {
 
   &:nth-child(even) {
     @media (max-width: 850px) {
-      background-color: grey;
       flex-direction: column;
     }
     @media (max-width: 520px) {
