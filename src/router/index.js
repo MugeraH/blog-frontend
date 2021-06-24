@@ -6,6 +6,7 @@ import Home from "../views/Home.vue";
 import Blogs from "../views/blog/Blogs.vue";
 import Blog from "../views/blog/Blog.vue";
 import AddBlog from "../views/blog/AddBlog.vue";
+import EditBlog from "../views/blog/EditBlog.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 
@@ -36,6 +37,14 @@ const routes = [
     path: "/add-blog",
     name: "AddBlog",
     component: AddBlog,
+    // meta: {
+    //   requireLogin: true,
+    // },
+  },
+  {
+    path: "/edit-blog/:id",
+    name: "EditBlog",
+    component: EditBlog,
     // meta: {
     //   requireLogin: true,
     // },

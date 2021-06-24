@@ -8,7 +8,9 @@
         </p>
       </div>
       <div class="buttons">
-        <router-link class="btn btn-info mr-3" to="#">Edit Post</router-link>
+        <router-link class="btn btn-info mr-3" 
+        :to="{ name: 'EditBlog', params: { id: post.id } }"
+        >Edit Post</router-link>
         <router-link class="btn btn-danger" to="#">delete Post</router-link>
       </div>
     </div>
@@ -16,11 +18,11 @@
     <div class="blog-image">
       <img :src="image" alt="" class="img-responsive" />
     </div>
-    <div class="blog-content">
+    <div class="blog-content ">
       <p class="m-0 p-0 text-center post-desc">
         <span>"</span> {{ post.description }}<span>"</span>
       </p>
-      <p class="blog">
+      <p class="blog mt-2">
         {{ post.blog_content }}
       </p>
     </div>
