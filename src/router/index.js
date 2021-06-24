@@ -5,6 +5,7 @@ import store from "../store";
 import Home from "../views/Home.vue";
 import Blogs from "../views/blog/Blogs.vue";
 import Blog from "../views/blog/Blog.vue";
+import AddBlog from "../views/blog/AddBlog.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 
@@ -30,6 +31,11 @@ const routes = [
     path: "/blogs",
     name: "Blogs",
     component: Blogs,
+  },
+  {
+    path: "/add-blog",
+    name: "AddBlog",
+    component: AddBlog,
     // meta: {
     //   requireLogin: true,
     // },

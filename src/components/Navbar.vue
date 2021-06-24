@@ -21,7 +21,9 @@
             >
           </template>
           <template v-else>
-            <router-link class="link" to="#">Create Post</router-link>
+            <router-link class="link" :to="{ name: 'AddBlog' }"
+              >Create Post</router-link
+            >
 
             <button class="link" to="#" @click="logout">Logout</button>
           </template>
@@ -54,7 +56,9 @@
           <router-link class="link" :to="{ name: 'Login' }">Login</router-link>
         </template>
         <template v-else>
-          <router-link class="link" to="#">Create Post</router-link>
+          <router-link class="link" :to="{ name: 'AddBlog' }"
+            >Create Post</router-link
+          >
 
           <button class="link" @click="logout">Logout</button>
         </template>
@@ -190,7 +194,7 @@ header {
   .menu-icon {
     cursor: pointer;
     position: absolute;
-    top: 14px;
+    top: 8px;
     right: 25px;
     height: 29px;
     width: auto;

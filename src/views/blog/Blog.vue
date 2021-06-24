@@ -14,7 +14,7 @@
     </div>
 
     <div class="blog-image">
-            <img :src="image" alt="" class="img-responsive" />
+      <img :src="image" alt="" class="img-responsive" />
     </div>
     <div class="blog-content">
       <p class="m-0 p-0 text-center post-desc">
@@ -80,7 +80,6 @@ export default {
     @media (max-width: 850px) {
     }
     @media (max-width: 470px) {
-      background-color: grey;
       flex-direction: column;
       justify-content: center;
     }
@@ -95,10 +94,12 @@ export default {
     }
   }
   .blog-image {
-    background-color: green;
     height: 480px;
     width: 100%;
-     img {
+    @media (max-width: 470px) {
+      height: 300px;
+    }
+    img {
       width: 100%;
       height: 100%;
       object-fit: cover;

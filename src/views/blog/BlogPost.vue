@@ -39,7 +39,6 @@ export default {
   },
   methods: {
     getImageUrl() {
-      console.log(this.post.image_url);
       this.image = this.post.image_url;
     },
 
