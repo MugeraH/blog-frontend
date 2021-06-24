@@ -29,7 +29,7 @@
 
 <script>
 import axios from "axios";
-import { toast } from "bulma-toast";
+
 export default {
   name: "Login",
   data() {
@@ -64,14 +64,7 @@ export default {
           this.$router.push({ path: "/" });
           console.log("logging in");
 
-          toast({
-            message: "Login Successful",
-            type: "is-success",
-            dismissible: true,
-            pauseOnHover: true,
-            duration: 2000,
-            position: "bottom-right",
-          });
+   
         })
         .catch((error) => {
           if (error.response) {

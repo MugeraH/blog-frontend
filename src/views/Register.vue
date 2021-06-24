@@ -32,7 +32,7 @@
 
 <script>
 import axios from "axios";
-import { toast } from "bulma-toast";
+
 export default {
   name: "Register",
   data() {
@@ -76,14 +76,6 @@ export default {
           .post("/api/v1/users/", formData)
           .then((response) => {
             console.log(response);
-            toast({
-              message: "Account was created,you can now login",
-              type: "is-success",
-              dismissible: true,
-              pauseOnHover: true,
-              duration: 2000,
-              position: "bottom-right",
-            });
 
             this.$router.push("/login");
           })

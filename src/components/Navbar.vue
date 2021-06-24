@@ -67,7 +67,7 @@
 import menuIcon from "../assets/Icons/bars-regular.svg";
 import closeMenuIcon from "../assets/Icons/close.svg";
 import axios from "axios";
-import { toast } from "bulma-toast";
+
 export default {
   name: "Navbar",
   components: {
@@ -100,15 +100,6 @@ export default {
       axios.defaults.headers.common["Authorization"] = "";
       localStorage.removeItem("token");
       this.$store.commit("removeToken");
-
-      toast({
-        message: "Logout Successful",
-        type: "is-success",
-        dismissible: true,
-        pauseOnHover: true,
-        duration: 2000,
-        position: "bottom-right",
-      });
 
       this.$router.push("/");
     },
