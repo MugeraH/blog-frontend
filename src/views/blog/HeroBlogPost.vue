@@ -1,13 +1,23 @@
 <template>
   <div class="wrapper">
-    <!-- <img src=require("@/assets/assets/design-for-everyone.jpg")> alt="" /> -->
+    <!-- <img :src="require(`{{post.image_url}}`)" alt="image" /> -->
 
-    <h2 class="centered" :post="post">{{ post.title }}</h2>
+    <h2>{{ post.title }}</h2>
+
+    <div class="centered">
+      <span>
+        {{ post.created_at }}
+      </span>
+    </div>
   </div>
 </template>
 
 <script>
-export default {};
+ import moment from "moment";
+export default {
+  name: "HeroBlogPost",
+  props: ["post"],
+};
 </script>
 
 <style>
