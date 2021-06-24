@@ -30,17 +30,14 @@ const routes = [
     path: "/blogs",
     name: "Blogs",
     component: Blogs,
-    meta: {
-      requireLogin: true,
-    },
+    // meta: {
+    //   requireLogin: true,
+    // },
   },
   {
     path: "/blogs/:id",
     name: "Blog",
     component: Blog,
-    meta: {
-      requireLogin: true,
-    },
   },
 ];
 
