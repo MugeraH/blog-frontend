@@ -99,29 +99,21 @@ export default {
     fill: #fff;
   }
 }
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255, 102, 0) transparent;
+  scroll-behavior: smooth;
+}
 
-/* .blog-card-wrap {
-  position: relative;
-  padding: 80px 16px;
-  background: #f1f1f1;
-  @media (min-width: 500px) {
-    padding: 100px 16px;
-  }
-
-  .blog-cards {
-    display: grid;
-    gap: 32px;
-    grid-template-columns: 1fr;
-
-    @media (min-width: 500px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
-    @media (min-width: 900px) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @media (min-width: 500px) {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  } 
-} */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgb(255, 102, 0);
+  border-radius: 20px;
+  border: transparent;
+}
 </style>

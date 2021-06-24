@@ -80,8 +80,8 @@ export default {
     color: #fff;
   }
   span {
-    font-size: 12px;
-    color: rgb(61, 60, 60);
+    font-size: 14px;
+    color: rgb(174, 174, 174);
   }
 
   img {
@@ -94,7 +94,9 @@ export default {
   }
   .card-text {
     height: 60px;
+    overflow-y: scroll;
     color: #fff;
+    font-size: 18px;
   }
 
   .post-btn {
