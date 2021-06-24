@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="m-0">
     <nav class="container-fluid m-0 p-0">
       <div class="branding">
         <router-link class="header" :to="{ name: 'Home' }"
@@ -10,7 +10,7 @@
       <div class="nav-links">
         <ul v-show="!mobileNav && !mobile">
           <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
-          <router-link class="link" to="#">Blogs</router-link>
+          <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
 
           <template v-if="!$store.state.isAuthenticated">
             <router-link class="link" :to="{ name: 'Register' }"
@@ -48,7 +48,7 @@
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
         <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
-        <router-link class="link" to="#">Blogs</router-link>
+        <router-link class="link" :to="{ name: 'Blogs' }">Blogs</router-link>
         <template v-if="!$store.state.isAuthenticated">
           <router-link class="link" :to="{ name: 'Register' }"
             >Register</router-link
