@@ -38,7 +38,7 @@ export default {
       await axios
         .get("/api/v1/blogs")
         .then((response) => {
-          this.posts = response.data;
+          this.posts = (response.data).slice(0,(response.data).length-1);
         })
         .catch((error) => {
           console.log(error);

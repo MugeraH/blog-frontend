@@ -19,22 +19,27 @@
         Random Thoughts
       </button>
     </div>
-    <div class="blog-post-wrapper">
-      <div class="card" v-for="post in posts" :key="post.id">
-        {{ post.title }}
-      </div>
+    <div class="blog-post-wrapper mt-2">
+      <BlogCard :post="post" v-for="post in posts" :key="post.id" />
     </div>
   </div>
 </template>
 
 <script>
+import BlogCard from "./BlogCard.vue";
+
 import axios from "axios";
+
 export default {
   name: "Blogs",
+  components: {
+    BlogCard,
+  },
 
   data() {
     return {
       posts: {},
+      images: {},
       category: "",
     };
   },
@@ -49,6 +54,11 @@ export default {
         .get("/api/v1/blogs")
         .then((response) => {
           this.posts = response.data;
+          this.images = this.posts.map((post) => {
+            return post.image_url;
+          });
+
+          console.log(this.images.length);
         })
         .catch((error) => {
           console.log(error);
@@ -61,7 +71,7 @@ export default {
       this.$store.commit("setIsLoading", true);
 
       await axios
-        .get(`/api/v1/blogs/${category}`)
+        .get(`/api/v1/blogs-category/${category}`)
         .then((response) => {
           this.posts = response.data;
         })
@@ -102,10 +112,11 @@ export default {
 
 <style lang="scss" scoped>
 .blogs-wrapper {
-  background: rgb(255, 102, 0);
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
+  padding-bottom: 30px;
+
   align-items: center;
   flex-direction: column;
 
@@ -113,15 +124,17 @@ export default {
     align-self: center;
     margin: 25px auto;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     .category-link {
-      color: white;
-      background: rgb(255, 102, 0);
+      color: rgb(255, 102, 0);
+      background: white;
       border: none;
       outline: none;
       font-size: 20px;
+      font-weight: bold;
       padding-right: 10px;
-      border-right: 3px solid white;
+      border-right: 3px solid rgb(255, 102, 0);
       transition: all 0.5s ease;
       &:hover {
         color: rgb(2, 2, 2);
@@ -136,14 +149,10 @@ export default {
   .blog-post-wrapper {
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    gap: 5px;
     flex-wrap: wrap;
     align-items: center;
-
-    width: 70%;
-    .card {
-      width: 300px;
-    }
+    width: 80%;
   }
 }
 </style>

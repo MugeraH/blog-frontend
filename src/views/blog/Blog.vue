@@ -54,6 +54,7 @@ export default {
         .get(`/api/v1/blogs/${postID}`)
         .then((response) => {
           this.post = response.data;
+
           this.image = this.post.image_url;
         })
         .catch((error) => {
