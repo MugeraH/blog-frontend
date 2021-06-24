@@ -8,10 +8,12 @@
         </p>
       </div>
       <div class="buttons">
-        <router-link class="btn btn-info mr-3" 
-        :to="{ name: 'EditBlog', params: { id: post.id } }"
-        >Edit Post</router-link>
-        <router-link class="btn btn-danger" to="#">delete Post</router-link>
+        <router-link
+          class="btn btn-info mr-3"
+          :to="{ name: 'EditBlog', params: { id: post.id } }"
+          >Edit Post</router-link
+        >
+        <button class="btn btn-danger" @click="deletePost">Delete Post</button>
       </div>
     </div>
 
@@ -59,6 +61,23 @@ export default {
         });
 
       this.$store.commit("setIsLoading", false);
+    },
+    async deletePost() {
+      if (confirm("Are you sure you want to delete this post")) {
+        console.log("sure");
+        const postID = this.$route.params.id;
+
+        await axios
+          .delete(`/api/v1/blogs/${postID}`)
+          // eslint-disable-next-line no-unused-vars
+          .then((response) => {
+            alert("Post deleted succesfully");
+            this.$router.push({ path: "/blogs" });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     },
     callDate(date, dateType) {
       const date1 = new Date(date);
