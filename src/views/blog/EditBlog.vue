@@ -1,20 +1,20 @@
 <template>
   <div class="form-container">
     <header class=" form-header m-0">
-      <p class=" text-center">Add Blog</p>
+      <p class=" text-center">Edit Blog</p>
     </header>
     <form @submit.prevent="submitForm">
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" v-model="title" />
+        <input type="text" class="form-control" v-model="post.title" />
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <input type="text" class="form-control" v-model="description" />
+        <input type="text" class="form-control" v-model="post.description" />
       </div>
       <div class="form-group">
         <label for="category">Category</label>
-        <select class="form-control" v-model="category">
+        <select class="form-control" v-model="post.category">
           <option value="life">Life</option>
           <option value="Business">Business</option>
           <option value="random_thoughts">Random_thoughts</option>
@@ -26,14 +26,14 @@
 
       <div class="form-group">
         <label for="blog_content">Blog </label>
-        <textarea class="form-control" v-model="blog_content"></textarea>
+        <textarea class="form-control" v-model="post.blog_content"></textarea>
       </div>
       <div class="form-group">
         <label for="image_url">Image url</label>
-        <input type="text" class="form-control" v-model="image_url" />
+        <input type="text" class="form-control" v-model="post.image_url" />
       </div>
 
-      <button type="submit" class="btn btn-large">Post</button>
+      <button type="submit" class="btn btn-large">Update</button>
     </form>
   </div>
 </template>
@@ -41,32 +41,40 @@
 <script>
 import axios from "axios";
 export default {
-  name: "AddBlog",
+  name: "EditBlog",
   data() {
     return {
-      title: "",
-      category: "life",
-      description: "",
-      image_url: "",
-      blog_content: "",
+      post: {},
     };
   },
+  mounted() {
+    this.getPost();
+  },
   methods: {
-    async submitForm() {
+    async getPost() {
       this.$store.commit("setIsLoading", true);
-      const blog = {
-        title: this.title,
-        category: this.category,
-        description: this.description,
-        image_url: this.image_url,
-        blog_content: this.blog_content,
-      };
+      const postID = this.$route.params.id;
 
       await axios
-        .post("api/v1/blogs", blog)
+        .get(`/api/v1/blogs/${postID}`)
+        .then((response) => {
+          this.post = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      this.$store.commit("setIsLoading", false);
+    },
+    async submitForm() {
+      this.$store.commit("setIsLoading", true);
+      const postID = this.$route.params.id;
+
+      await axios
+        .put(`/api/v1/blogs/${postID}`, this.post)
         .then((response) => {
           console.log(response);
-          this.$router.push({ path: "/blogs" });
+          this.$router.push({ path: `/blogs/${postID}` });
         })
         .catch((error) => {
           console.log(error);

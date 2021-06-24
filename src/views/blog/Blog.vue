@@ -41,10 +41,10 @@ export default {
     };
   },
   mounted() {
-    this.getLead();
+    this.getPost();
   },
   methods: {
-    async getLead() {
+    async getPost() {
       this.$store.commit("setIsLoading", true);
       const postID = this.$route.params.id;
 
