@@ -13,10 +13,20 @@
 </template>
 
 <script>
- import moment from "moment";
+import moment from "moment";
 export default {
   name: "HeroBlogPost",
   props: ["post"],
+  methods: {
+    callDate(date, dateType) {
+      const date1 = new Date(date);
+      if (dateType === "fullDate") {
+        return moment(date1).format("ddd, MMMM Do YYYY");
+      } else {
+        return moment(date1).format("HH:mm");
+      }
+    },
+  },
 };
 </script>
 
