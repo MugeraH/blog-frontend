@@ -12,7 +12,10 @@
           <router-link class="link" to="#">Home</router-link>
           <router-link class="link" to="#">Blogs</router-link>
           <router-link class="link" to="#">Create Post</router-link>
-          <router-link class="link" to="#">Login/Register</router-link>
+          <router-link class="link" :to="{ name: 'Register' }"
+            >Register</router-link
+          >
+          <router-link class="link" :to="{ name: 'Login' }">Login</router-link>
         </ul>
       </div>
     </nav>
