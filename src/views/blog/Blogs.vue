@@ -1,6 +1,9 @@
 <template>
   <div class="blogs-wrapper m-0">
     <div class="categories">
+      <button @click="getBlogs" class="category-link">
+        All
+      </button>
       <button @click="setCategoryLife" class="category-link">
         Life
       </button>
@@ -16,7 +19,11 @@
         Random Thoughts
       </button>
     </div>
-    <div class="blog-post-card"></div>
+    <div class="blog-post-wrapper">
+      <div class="card" v-for="post in posts" :key="post.id">
+        {{ post.title }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -99,6 +106,7 @@ export default {
   height: 100vh;
   width: 100%;
   display: flex;
+  align-items: center;
   flex-direction: column;
 
   .categories {
@@ -122,6 +130,19 @@ export default {
       &:last-child {
         border-right: none;
       }
+    }
+  }
+
+  .blog-post-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: center;
+
+    width: 70%;
+    .card {
+      width: 300px;
     }
   }
 }
