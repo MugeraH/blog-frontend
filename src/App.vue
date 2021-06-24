@@ -84,7 +84,7 @@ export default {
   }
 }
 
-/* .arrow {
+.arrow {
   margin-left: 8px;
   width: 12px;
   path {
@@ -96,7 +96,7 @@ export default {
   path {
     fill: #fff;
   }
-} */
+}
 
 /* .blog-card-wrap {
   position: relative;

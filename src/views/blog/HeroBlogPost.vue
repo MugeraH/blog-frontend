@@ -51,7 +51,7 @@ export default {
   position: relative;
   text-align: center;
   background-color: rgb(0, 0, 0);
-  height: 80%;
+  height: 70vh;
   @media (max-width: 550px) {
     height: 550px;
   }
@@ -59,7 +59,7 @@ export default {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    opacity: 0.6;
+    opacity: 0.5;
     transition: all 0.3s ease;
     @media (max-width: 470px) {
       height: 100%;
@@ -67,7 +67,7 @@ export default {
     }
 
     &:hover {
-      opacity: 1;
+      opacity: 0.8;
     }
   }
 }

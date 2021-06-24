@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <HeroBlogPost :post="heroPost" />
-    <!-- <BlogPost :post="post" v-for="(post, index) in posts" :key="index" /> -->
+    <BlogPost :post="post" v-for="(post, index) in posts" :key="index" />
   </div>
 </template>
 
@@ -15,7 +15,7 @@ export default {
   data() {
     return {
       heroPost: {},
-      
+
       posts: {},
     };
   },
