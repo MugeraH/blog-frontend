@@ -5,6 +5,12 @@
     <div class="centered">
       <p class="post_title">{{ post.title }}</p>
       <p class="post_desc">{{ post.description }}</p>
+      <router-link
+        :to="{ name: 'Blog', params: { id: post.id } }"
+        class="btn post-btn"
+      >
+        Read <Arrow class="arrow " />
+      </router-link>
     </div>
 
     <div class="top-left">
@@ -17,12 +23,16 @@
 
 <script>
 import moment from "moment";
+import Arrow from "../../assets/Icons/arrow-right-light.svg";
 export default {
   name: "HeroBlogPost",
   data() {
     return {
       image: "",
     };
+  },
+  components: {
+    Arrow,
   },
   props: ["post"],
   updated() {
@@ -87,6 +97,35 @@ export default {
   }
   .post_desc {
     font-size: 30px;
+  }
+
+  .post-btn {
+    display: inline-block;
+    background: #fff;
+    color: #000;
+
+    padding: 7px 15px;
+
+    border-radius: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px;
+
+    font-weight: 600;
+    font-family: inherit;
+    transition: 0.3s all ease;
+    &:focus {
+      outline: none;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+    &:hover {
+      color: #000;
+      background: rgb(255, 102, 0);
+    }
   }
 }
 .top-left {

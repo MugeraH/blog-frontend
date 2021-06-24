@@ -6,7 +6,10 @@
       <p class="description">
         {{ post.description }}
       </p>
-      <router-link class="btn post-btn" to="#">
+      <router-link
+        class="btn post-btn"
+        :to="{ name: 'Blog', params: { id: post.id } }"
+      >
         Read <Arrow class="arrow arrow-light" />
       </router-link>
     </div>

@@ -85,6 +85,8 @@ export default {
 }
 
 .arrow {
+  font-size: 20px;
+  font-weight: bold;
   margin-left: 8px;
   width: 12px;
   path {
