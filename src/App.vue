@@ -1,12 +1,12 @@
 <template>
   <div class="app">
     <Navbar />
-    <!-- <div
+    <div
       class="loader-wrapper"
       v-bind:class="{ 'is-loading': $store.state.isLoading }"
     >
       <div class="loader"></div>
-    </div> -->
+    </div>
     <router-view />
   </div>
 </template>
@@ -53,6 +53,14 @@ export default {
   color: white;
   display: flex;
   justify-content: center;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+
+  &.is-loading {
+    height: 80px;
+    width: 50px;
+  }
 }
 
 .loader {
@@ -61,9 +69,10 @@ export default {
 
   border-radius: 50%;
   margin: 30px;
-  width: 50px;
-  height: 50px;
+
   animation: spin 1s linear infinite;
+  height: 80px;
+  width: 50px;
 }
 
 @keyframes spin {

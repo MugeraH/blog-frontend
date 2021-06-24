@@ -5,8 +5,8 @@
     </header>
     <form @submit.prevent="submitForm">
       <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" v-model="email" />
+        <label for="username">Username</label>
+        <input type="text" class="form-control" v-model="username" />
       </div>
       <div class="form-group">
         <label for="password">Password</label>
@@ -34,7 +34,7 @@ export default {
   name: "Login",
   data() {
     return {
-      email: "",
+      username: "",
       password: "",
 
       errors: [],
@@ -48,7 +48,7 @@ export default {
       localStorage.removeItem("token");
 
       const formData = {
-        username: this.email,
+        username: this.username,
         password: this.password,
       };
 
@@ -61,7 +61,7 @@ export default {
 
           localStorage.setItem("token", token);
 
-          this.$router.push({ path: "/home" });
+          this.$router.push({ path: "/" });
           console.log("logging in");
 
           toast({
@@ -70,7 +70,7 @@ export default {
             dismissible: true,
             pauseOnHover: true,
             duration: 2000,
-            position: "top-right",
+            position: "bottom-right",
           });
         })
         .catch((error) => {
