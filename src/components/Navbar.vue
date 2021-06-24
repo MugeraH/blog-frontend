@@ -9,14 +9,22 @@
 
       <div class="nav-links">
         <ul v-show="!mobileNav && !mobile">
-          <router-link class="link" :to="{ name: 'Home' }"
-          >Home</router-link>
+          <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
           <router-link class="link" to="#">Blogs</router-link>
-          <router-link class="link" to="#">Create Post</router-link>
-          <router-link class="link" :to="{ name: 'Register' }"
-            >Register</router-link
-          >
-          <router-link class="link" :to="{ name: 'Login' }">Login</router-link>
+
+          <template v-if="!$store.state.isAuthenticated">
+            <router-link class="link" :to="{ name: 'Register' }"
+              >Register</router-link
+            >
+            <router-link class="link" :to="{ name: 'Login' }"
+              >Login</router-link
+            >
+          </template>
+          <template v-else>
+            <router-link class="link" to="#">Create Post</router-link>
+
+            <button class="link" to="#" @click="logout">Logout</button>
+          </template>
         </ul>
       </div>
     </nav>
@@ -37,14 +45,19 @@
     </transition>
     <transition name="mobile-nav">
       <ul class="mobile-nav" v-show="mobileNav">
-        <router-link class="link" :to="{ name: 'Home' }"
-        >Home</router-link>
+        <router-link class="link" :to="{ name: 'Home' }">Home</router-link>
         <router-link class="link" to="#">Blogs</router-link>
-        <router-link class="link" to="#">Create Post</router-link>
-        <router-link class="link" :to="{ name: 'Register' }"
+        <template v-if="!$store.state.isAuthenticated">
+          <router-link class="link" :to="{ name: 'Register' }"
             >Register</router-link
           >
           <router-link class="link" :to="{ name: 'Login' }">Login</router-link>
+        </template>
+        <template v-else>
+          <router-link class="link" to="#">Create Post</router-link>
+
+          <button class="link" @click="logout">Logout</button>
+        </template>
       </ul>
     </transition>
   </header>
@@ -53,6 +66,8 @@
 <script>
 import menuIcon from "../assets/Icons/bars-regular.svg";
 import closeMenuIcon from "../assets/Icons/close.svg";
+import axios from "axios";
+import { toast } from "bulma-toast";
 export default {
   name: "Navbar",
   components: {
@@ -71,6 +86,32 @@ export default {
     this.checkScreenWidth();
   },
   methods: {
+    async logout() {
+      await axios
+        .post("/api/v1/token/logout/")
+        // eslint-disable-next-line no-unused-vars
+        .then((response) => {
+          console.log("Logout");
+        })
+        .catch((error) => {
+          console.log(JSON.stringify(error));
+        });
+
+      axios.defaults.headers.common["Authorization"] = "";
+      localStorage.removeItem("token");
+      this.$store.commit("removeToken");
+
+      toast({
+        message: "Logout Successful",
+        type: "is-success",
+        dismissible: true,
+        pauseOnHover: true,
+        duration: 2000,
+        position: "bottom-right",
+      });
+
+      this.$router.push("/");
+    },
     checkScreenWidth() {
       this.windowWidth = window.innerWidth;
       if (this.windowWidth <= 750) {
@@ -92,7 +133,7 @@ export default {
 header {
   background-color: rgb(10, 10, 10);
   width: 100%;
-  padding: 0 25px;
+  padding: 4px 25px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   z-index: 99;
@@ -158,7 +199,7 @@ header {
   .menu-icon {
     cursor: pointer;
     position: absolute;
-    top: 5px;
+    top: 14px;
     right: 25px;
     height: 29px;
     width: auto;
@@ -170,20 +211,21 @@ header {
   }
 
   .mobile-nav {
-    padding: 20px;
+    padding: 70px 20px;
     width: 70%;
     max-width: 250px;
     display: flex;
     flex-direction: column;
     position: fixed;
     height: 100%;
-    background-color: rgb(255, 102, 0);
+    background-color: rgb(10, 10, 10);
     top: 0;
     left: 0;
 
     .link {
+      margin-top: 20px;
       padding: 30px 0;
-      color: white;
+      color: rgb(255, 102, 0);
       font-weight: 600;
       transition: 0.5s all ease;
       padding: 0px 0px 5px 0px;
@@ -227,6 +269,14 @@ header {
 
   .mobile-icon-leave-to {
     transform: opacity;
+  }
+
+  button.link {
+    background: transparent;
+    outline: none;
+    border: none;
+    padding: 0;
+    text-align: initial;
   }
 }
 </style>
