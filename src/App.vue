@@ -18,7 +18,6 @@ export default {
   name: "App",
   components: {
     Navbar,
- 
   },
   beforeCreate() {
     this.$store.commit("initializeStore");

@@ -66,6 +66,7 @@ export default {};
       font-weight: 600;
       font-family: inherit;
       transition: 0.3s all ease;
+      border: 2px solid black;
       &:focus {
         outline: none;
       }
@@ -74,8 +75,9 @@ export default {};
         transform: scale(0.98);
       }
       &:hover {
-        color: white;
+        color: black;
         background: rgb(255, 102, 0);
+        border: 2px solid black;
       }
     }
   }

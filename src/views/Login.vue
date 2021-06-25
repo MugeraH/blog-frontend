@@ -61,10 +61,8 @@ export default {
 
           localStorage.setItem("token", token);
 
-          this.$router.push({ path: "/home" });
-          console.log("logging in");
-
-   
+          this.$router.push("/home");
+          
         })
         .catch((error) => {
           if (error.response) {
@@ -92,7 +90,6 @@ export default {
   border-top-right-radius: 10px;
   overflow: hidden;
   @media (max-width: 470px) {
- 
     width: 100%;
   }
 

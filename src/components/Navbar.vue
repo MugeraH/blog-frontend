@@ -115,9 +115,7 @@ export default {
       await axios
         .post("/api/v1/token/logout/")
         // eslint-disable-next-line no-unused-vars
-        .then((response) => {
-          console.log("Logout");
-        })
+        .then((response) => {})
         .catch((error) => {
           console.log(JSON.stringify(error));
         });
