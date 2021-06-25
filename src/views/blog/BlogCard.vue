@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="blog-card">
+    <div class="blog-card mt-4">
       <img :src="image" alt="" class="img-responsive" />
 
       <div class="card-body">
@@ -44,7 +44,7 @@ export default {
   methods: {
     getImage() {
       this.image = this.post.image_url;
-      console.log(this.image);
+
     },
     callDate(date, dateType) {
       const date1 = new Date(date);

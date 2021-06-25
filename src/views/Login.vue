@@ -61,7 +61,7 @@ export default {
 
           localStorage.setItem("token", token);
 
-          this.$router.push({ path: "/" });
+          this.$router.push({ path: "/home" });
           console.log("logging in");
 
    

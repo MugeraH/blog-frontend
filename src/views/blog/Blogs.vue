@@ -19,8 +19,11 @@
         Random Thoughts
       </button>
     </div>
-    <div class="blog-post-wrapper mt-2">
+    <div class="blog-post-wrapper mt-2" v-if="posts.length >= 1">
       <BlogCard :post="post" v-for="post in posts" :key="post.id" />
+    </div>
+    <div class="blog-post-wrapper mt-2" v-else>
+      <h3 class="text-center">There are no blog posts in that category</h3>
     </div>
   </div>
 </template>
@@ -58,7 +61,7 @@ export default {
             return post.image_url;
           });
 
-          console.log(this.images.length);
+          
         })
         .catch((error) => {
           console.log(error);
@@ -116,7 +119,7 @@ export default {
   width: 100%;
   display: flex;
   padding-bottom: 30px;
-
+  text-align: center;
   align-items: center;
   flex-direction: column;
 
@@ -126,6 +129,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    padding: 0px 20px;
     .category-link {
       color: rgb(255, 102, 0);
       background: white;
@@ -153,6 +157,12 @@ export default {
     flex-wrap: wrap;
     align-items: center;
     width: 80%;
+    h3{
+      justify-self: center;
+      align-self: center;
+      color: rgb(153, 12, 12);
+      margin-left: 40px;
+    }
   }
 }
 </style>

@@ -40,7 +40,7 @@
 
     <transition name="mobile-icon">
       <closeMenuIcon
-        @click.native="toogleMobileNav"
+        @click="toogleMobileNav"
         class="menu-icon"
         v-show="mobileNav && mobile"
       />

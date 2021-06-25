@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import store from "../store";
 
+import Landing from "../views/Landing.vue";
 import Home from "../views/Home.vue";
 import Blogs from "../views/blog/Blogs.vue";
 import Blog from "../views/blog/Blog.vue";
@@ -15,8 +16,16 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    name: "Landing",
+    component: Landing,
+  },
+  {
+    path: "/home",
     name: "Home",
     component: Home,
+    meta: {
+      requireLogin: true,
+    },
   },
   {
     path: "/login",
@@ -32,22 +41,25 @@ const routes = [
     path: "/blogs",
     name: "Blogs",
     component: Blogs,
+    meta: {
+      requireLogin: true,
+    },
   },
   {
     path: "/add-blog",
     name: "AddBlog",
     component: AddBlog,
-    // meta: {
-    //   requireLogin: true,
-    // },
+    meta: {
+      requireLogin: true,
+    },
   },
   {
     path: "/edit-blog/:id",
     name: "EditBlog",
     component: EditBlog,
-    // meta: {
-    //   requireLogin: true,
-    // },
+    meta: {
+      requireLogin: true,
+    },
   },
   {
     path: "/blogs/:id",
