@@ -108,7 +108,7 @@ export default {
   border-top-right-radius: 10px;
   overflow: hidden;
   @media (max-width: 470px) {
-    background-color: blue;
+
     width: 100%;
   }
 
